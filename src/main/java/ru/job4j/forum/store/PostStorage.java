@@ -1,4 +1,4 @@
-package ru.job4j.forum.storage;
+package ru.job4j.forum.store;
 
 import org.springframework.stereotype.Repository;
 import ru.job4j.forum.model.Comment;

@@ -1,20 +1,25 @@
 package ru.job4j.forum.model;
 
+import javax.persistence.*;
 import java.util.*;
 
+@Entity
 public class Post {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
-    private String desc;
+    private String description;
     private final Calendar created = GregorianCalendar.getInstance();
+    @OneToMany(cascade = CascadeType.ALL)
     private List<Comment> comments = new ArrayList<>();
 
     public static Post of(String name, String desc, int id) {
         Post post = new Post();
         post.id = id;
         post.name = name;
-        post.desc = desc;
+        post.description = desc;
         return post;
     }
 
@@ -42,12 +47,12 @@ public class Post {
         this.name = name;
     }
 
-    public String getDesc() {
-        return desc;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDesc(String desc) {
-        this.desc = desc;
+    public void setDescription(String desc) {
+        this.description = desc;
     }
 
     public Calendar getCreated() {

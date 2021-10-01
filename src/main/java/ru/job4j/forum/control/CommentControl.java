@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import ru.job4j.forum.model.Comment;
+import ru.job4j.forum.model.Post;
 import ru.job4j.forum.service.PostService;
 
 @Controller
@@ -17,7 +18,9 @@ public class CommentControl {
 
     @PostMapping("/comment")
     public String save(@RequestParam("msg") String msg, @RequestParam("id") int id) {
-        service.getPost(id).addComment(Comment.of(msg));
+        Post post = service.getPost(id);
+        post.addComment(Comment.of(msg));
+        service.save(post);
         return "redirect:/post?id=" + id;
     }
 }

@@ -33,6 +33,9 @@ public class PostControl {
 
     @PostMapping("/save")
     public String save(@ModelAttribute Post post) {
+        if (post.getId() > 0) {
+            service.getPost(post.getId()).getComments().forEach(post::addComment);
+        }
         service.save(post);
         return "redirect:/";
     }

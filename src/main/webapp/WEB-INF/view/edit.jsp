@@ -51,9 +51,9 @@
                                 <% if (post != null) { %> placeholder="<%=post.getName()%>" <% } %>>
                         </div>
                         <div class="form-group">
-                            <label for="desc">Description</label>
-                            <input required type="text" class="form-control" name="desc" id="desc"
-                                <% if (post != null) { %> placeholder="<%=post.getDesc()%>" <% } %>>
+                            <label for="description">Description</label>
+                            <input required type="text" class="form-control" name="description" id="description"
+                                <% if (post != null) { %> placeholder="<%=post.getDescription()%>" <% } %>>
                         </div>
                         <button type="submit" class="btn btn-primary">Update</button>
                     </form>

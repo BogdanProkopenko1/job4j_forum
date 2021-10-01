@@ -3,17 +3,20 @@ package ru.job4j.forum.service;
 import org.springframework.stereotype.Service;
 import ru.job4j.forum.model.Post;
 import ru.job4j.forum.model.User;
-import ru.job4j.forum.storage.PostStorage;
+import ru.job4j.forum.store.PostRepository;
+import ru.job4j.forum.store.UserRepository;
 
 import java.util.*;
 
 @Service
 public class PostService {
 
-    private final PostStorage storage;
+    private final PostRepository storage;
+    private final UserRepository users;
 
-    public PostService(PostStorage storage) {
+    public PostService(PostRepository storage, UserRepository users) {
         this.storage = storage;
+        this.users = users;
     }
 
     public List<Post> getPosts() {
@@ -21,7 +24,7 @@ public class PostService {
     }
 
     public Post getPost(int id) {
-        return storage.getPost(id);
+        return storage.getPostById(id);
     }
 
     public void save(Post post) {
@@ -29,6 +32,6 @@ public class PostService {
     }
 
     public User save(User user) {
-        return storage.save(user);
+        return users.save(user);
     }
 }

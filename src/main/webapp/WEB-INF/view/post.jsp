@@ -42,9 +42,11 @@
     </div>
     <div class="row">
         <h6><c:out value="${post.name}"/></h6>
+        <a href="<c:url value='/update?id=${post.id}'/>">Edit</a>
+
     </div>
     <div class="row">
-        <c:out value="${post.desc}"/>
+        <c:out value="${post.description}"/>
     </div>
     <div class="row">
         <c:out value="${post.created.getTime()}"/>
