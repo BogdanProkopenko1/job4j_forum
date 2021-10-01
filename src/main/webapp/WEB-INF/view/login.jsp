@@ -31,7 +31,8 @@
     <div class="row">
         <div class="card" style="width: 100%">
             <div class="card-header">
-                Authorization
+                <h5>Authorization</h5>
+                <h6><a href="<c:url value='/reg'/>">Registration</a></h6>
             </div>
             <div class="card-body">
                 <form action="<c:url value='/login'/>" method="post">
@@ -49,6 +50,7 @@
                         <input required type="password" class="form-control" name="password" id="password" placeholder="Enter password">
                     </div>
                     <button type="submit" class="btn btn-primary">Sign in</button>
+                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
                 </form>
             </div>
         </div>

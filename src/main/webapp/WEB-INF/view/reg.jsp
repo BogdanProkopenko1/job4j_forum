@@ -30,13 +30,14 @@
     <div class="row">
         <div class="card" style="width: 100%">
             <div class="card-header">
-                Registration
+                <h5>Registration</h5>
+                <h6><a href="<c:url value='/login'/>">Login</a></h6>
             </div>
             <div class="card-body">
                 <form action="<c:url value='/reg'/>" method="post">
                     <div class="form-group">
-                        <label for="name">Name</label>
-                        <input required type="text" class="form-control" name="name" id="name" placeholder="Enter username">
+                        <label for="username">Name</label>
+                        <input required type="text" class="form-control" name="username" id="username" placeholder="Enter username">
                     </div>
                     <div class="form-group">
                         <label for="email">E-mail</label>

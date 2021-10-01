@@ -1,8 +1,10 @@
 package ru.job4j.forum.service;
 
 import org.springframework.stereotype.Service;
+import ru.job4j.forum.model.Authority;
 import ru.job4j.forum.model.Post;
 import ru.job4j.forum.model.User;
+import ru.job4j.forum.store.AuthorityRepository;
 import ru.job4j.forum.store.PostRepository;
 import ru.job4j.forum.store.UserRepository;
 
@@ -13,8 +15,10 @@ public class PostService {
 
     private final PostRepository storage;
     private final UserRepository users;
+    private final AuthorityRepository authorities;
 
-    public PostService(PostRepository storage, UserRepository users) {
+    public PostService(PostRepository storage, UserRepository users, AuthorityRepository authorities) {
+        this.authorities = authorities;
         this.storage = storage;
         this.users = users;
     }
@@ -31,7 +35,11 @@ public class PostService {
         storage.save(post);
     }
 
-    public User save(User user) {
-        return users.save(user);
+    public void save(User user) {
+        users.save(user);
+    }
+
+    public Authority findAuthority(String role_user) {
+        return authorities.findByAuthority(role_user);
     }
 }

@@ -10,32 +10,48 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String name;
-    private String email;
     private String password;
+    private String email;
+    private String username;
+    private boolean enabled;
+    @ManyToOne
+    @JoinColumn(name = "authority_id")
+    private Authority authority;
 
-    public User of(String name, String email, String password) {
-        User user = new User();
-        user.name = name;
-        user.email = email;
-        user.password = password;
-        return user;
-    }
-
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getPassword() {
+        return password;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public Authority getAuthority() {
+        return authority;
+    }
+
+    public void setAuthority(Authority authority) {
+        this.authority = authority;
+    }
+
+    public boolean isEnabled() {
+        return enabled;
     }
 
     public String getEmail() {
@@ -46,12 +62,8 @@ public class User {
         this.email = email;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
     }
 
     @Override
@@ -68,6 +80,6 @@ public class User {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, email, password);
+        return Objects.hash(id);
     }
 }

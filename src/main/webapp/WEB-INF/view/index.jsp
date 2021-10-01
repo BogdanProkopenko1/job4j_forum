@@ -1,4 +1,3 @@
-<%@ page import="ru.job4j.forum.model.User" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!doctype html>
@@ -19,8 +18,8 @@
     <div class="row">
         <h3>Форум job4j</h3>
         <h5><a href="<c:url value='/create'/>">Add post</a></h5>
-        <h5><a href="<c:url value='/reg'/>">Registration</a></h5>
-        <h5><a href="<c:url value='/login'/>">Login</a></h5>
+        <h6><c:out value="${user.username}"/></h6>
+        <h5><a href="<c:url value='/logout'/>">Out</a></h5>
     </div>
     <div class="row">
         <table class="table">
