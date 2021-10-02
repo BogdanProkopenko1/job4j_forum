@@ -26,12 +26,16 @@ public class RegControl {
 
     @PostMapping("/reg")
     public String save(@ModelAttribute User user, HttpServletRequest request) {
-        user.setEnabled(true);
-        user.setPassword(encoder.encode(user.getPassword()));
-        user.setAuthority(authorities.findByAuthority("ROLE_USER"));
-        user.setEmail(request.getParameter("email"));
-        users.save(user);
-        return "redirect:/login";
+        if (users.findByUsername(user.getUsername()) == null) {
+            user.setEnabled(true);
+            user.setPassword(encoder.encode(user.getPassword()));
+            user.setAuthority(authorities.findByAuthority("ROLE_USER"));
+            user.setEmail(request.getParameter("email"));
+            users.save(user);
+            return "index";
+        }
+        return "redirect:/login?exists=true";
+
     }
 
     @GetMapping("/reg")

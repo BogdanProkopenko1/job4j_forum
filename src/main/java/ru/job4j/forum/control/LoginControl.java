@@ -18,13 +18,17 @@ public class LoginControl {
     @GetMapping("/login")
     public String loginPage(@RequestParam(value = "error", required = false) String error,
                             @RequestParam(value = "logout", required = false) String logout,
+                            @RequestParam(value = "exists", required = false) String exists,
                             Model model) {
         String errorMessage = null;
-        if(error != null) {
+        if (error != null) {
             errorMessage = "Username or Password is incorrect !!";
         }
-        if(logout != null) {
+        if (logout != null) {
             errorMessage = "You have been successfully logged out !!";
+        }
+        if (exists != null) {
+            errorMessage = "Account already exists!";
         }
         model.addAttribute("errorMessage", errorMessage);
         return "login";

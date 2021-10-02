@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface PostRepository extends CrudRepository<Post, Integer> {
 
-    @Query("select distinct p from Post p left join fetch p.comments")
+    @Query("select distinct p from Post p left join fetch p.comments order by p.created")
     List<Post> getPosts();
 
     @Query("select distinct p from Post p left join fetch p.comments where p.id = :id")
