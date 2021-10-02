@@ -26,9 +26,11 @@ public class PostControl {
     @GetMapping("/post")
     public String post(@RequestParam("id") int id, Model model) {
         Post post = service.getPost(id);
-        model.addAttribute("post", post);
-        model.addAttribute("comments", post.getComments());
-        return "/post";
+        if (post != null) {
+            model.addAttribute("post", post);
+            model.addAttribute("comments", post.getComments());
+        }
+        return "post";
     }
 
     @PostMapping("/save")
