@@ -2,6 +2,7 @@ package ru.job4j.forum.service;
 
 import org.springframework.stereotype.Service;
 import ru.job4j.forum.model.Authority;
+import ru.job4j.forum.model.Comment;
 import ru.job4j.forum.model.Post;
 import ru.job4j.forum.model.User;
 import ru.job4j.forum.store.AuthorityRepository;
@@ -27,7 +28,7 @@ public class PostService {
         return storage.getPosts();
     }
 
-    public Post getPost(int id) {
+    public Post findPostById(int id) {
         return storage.getPostById(id);
     }
 
@@ -39,7 +40,15 @@ public class PostService {
         users.save(user);
     }
 
-    public Authority findAuthority(String role_user) {
+    public Authority findAuthorityByName(String role_user) {
         return authorities.findByAuthority(role_user);
+    }
+
+    public User findUserByUsername(String username) {
+        return users.findByUsername(username);
+    }
+
+    public void addPostComment(int id, Comment com) {
+        findPostById(id).addComment(com);
     }
 }

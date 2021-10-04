@@ -25,7 +25,7 @@ public class PostControl {
 
     @GetMapping("/post")
     public String post(@RequestParam("id") int id, Model model) {
-        Post post = service.getPost(id);
+        Post post = service.findPostById(id);
         if (post != null) {
             model.addAttribute("post", post);
             model.addAttribute("comments", post.getComments());
@@ -37,16 +37,16 @@ public class PostControl {
     public String save(@ModelAttribute Post post) {
         int id = post.getId();
         if (id > 0) {
-            service.getPost(id).getComments().forEach(post::addComment);
+            service.findPostById(id).getComments().forEach(post::addComment);
             return "redirect:/post?id=" + id;
         }
         service.save(post);
-        return "index";
+        return "redirect:/index";
     }
 
     @GetMapping("/update")
     public String update(@RequestParam("id") int id, Model model) {
-        model.addAttribute("post", service.getPost(id));
+        model.addAttribute("post", service.findPostById(id));
         return "edit";
     }
 }

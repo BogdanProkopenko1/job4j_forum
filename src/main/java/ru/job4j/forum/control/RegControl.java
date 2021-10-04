@@ -6,8 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import ru.job4j.forum.model.User;
-import ru.job4j.forum.store.AuthorityRepository;
-import ru.job4j.forum.store.UserRepository;
+import ru.job4j.forum.service.PostService;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -15,27 +14,24 @@ import javax.servlet.http.HttpServletRequest;
 public class RegControl {
 
     private final PasswordEncoder encoder;
-    private final UserRepository users;
-    private final AuthorityRepository authorities;
+    private final PostService service;
 
-    public RegControl(PasswordEncoder encoder, UserRepository users, AuthorityRepository authorities) {
+    public RegControl(PasswordEncoder encoder, PostService service) {
         this.encoder = encoder;
-        this.users = users;
-        this.authorities = authorities;
+        this.service = service;
     }
 
     @PostMapping("/reg")
     public String save(@ModelAttribute User user, HttpServletRequest request) {
-        if (users.findByUsername(user.getUsername()) == null) {
+        if (service.findUserByUsername(user.getUsername()) == null) {
             user.setEnabled(true);
             user.setPassword(encoder.encode(user.getPassword()));
-            user.setAuthority(authorities.findByAuthority("ROLE_USER"));
+            user.setAuthority(service.findAuthorityByName("ROLE_USER"));
             user.setEmail(request.getParameter("email"));
-            users.save(user);
-            return "index";
+            service.save(user);
+            return "redirect:/index";
         }
         return "redirect:/login?exists=true";
-
     }
 
     @GetMapping("/reg")

@@ -6,6 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.Objects;
 
 @Entity
 public class Comment {
@@ -22,11 +23,32 @@ public class Comment {
         return comment;
     }
 
+    public Integer getId() {
+        return id;
+    }
+
     public String getMessage() {
         return message;
     }
 
     public Calendar getCreated() {
         return created;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Comment comment = (Comment) o;
+        return Objects.equals(id, comment.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }
