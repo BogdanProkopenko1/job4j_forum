@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.Objects;
@@ -31,8 +32,8 @@ public class Comment {
         return message;
     }
 
-    public Calendar getCreated() {
-        return created;
+    public String getCreated() {
+        return new SimpleDateFormat("HH:mm dd/MM/yy").format(created.getTime());
     }
 
     @Override

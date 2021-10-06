@@ -1,6 +1,7 @@
 package ru.job4j.forum.model;
 
 import javax.persistence.*;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 @Entity
@@ -55,8 +56,8 @@ public class Post {
         this.description = desc;
     }
 
-    public Calendar getCreated() {
-        return created;
+    public String getCreated() {
+        return new SimpleDateFormat("HH:mm dd/MM/yy").format(created.getTime());
     }
 
     @Override

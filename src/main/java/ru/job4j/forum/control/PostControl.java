@@ -1,5 +1,6 @@
 package ru.job4j.forum.control;
 
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -7,6 +8,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import ru.job4j.forum.model.Post;
+import ru.job4j.forum.model.User;
 import ru.job4j.forum.service.PostService;
 
 @Controller
@@ -30,6 +32,7 @@ public class PostControl {
             model.addAttribute("post", post);
             model.addAttribute("comments", post.getComments());
         }
+        model.addAttribute("user", SecurityContextHolder.getContext().getAuthentication().getPrincipal());
         return "post";
     }
 
@@ -38,6 +41,7 @@ public class PostControl {
         int id = post.getId();
         if (id > 0) {
             service.findPostById(id).getComments().forEach(post::addComment);
+            service.save(post);
             return "redirect:/post?id=" + id;
         }
         service.save(post);

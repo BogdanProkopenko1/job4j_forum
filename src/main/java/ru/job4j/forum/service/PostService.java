@@ -49,6 +49,8 @@ public class PostService {
     }
 
     public void addPostComment(int id, Comment com) {
-        findPostById(id).addComment(com);
+        Post post = findPostById(id);
+        post.addComment(com);
+        storage.save(post);
     }
 }

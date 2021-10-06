@@ -11,29 +11,28 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-    <title>Форум job4j</title>
+    <title>Forum job4j</title>
 </head>
 <body>
 <div class="container mt-3">
     <div class="row">
-        <h3>Форум job4j</h3>
-        <h5><a href="<c:url value='/create'/>">Add post</a></h5>
-        <h6><c:out value="${user.username}"/></h6>
-        <h5><a href="<c:url value='/logout'/>">Out</a></h5>
+        <h3><a style="font-weight: bold; color: black" href="<c:url value="/"/>">FORUM job4j</a></h3>
+        <h5 style="margin-left: 3%;"><a href="<c:url value='/create'/>">Create post</a></h5>
+        <h5 style="margin-left: auto"><a style="color: #c75450;" href="<c:url value='/logout'/>"><c:out value="${user.username}"/> : out</a></h5>
     </div>
-    <div class="row">
+    <div style="margin-top: 2%" class="row">
         <table class="table">
             <thead>
             <tr>
-                <th scope="col">Тема</th>
-                <th scope="col">Дата создания</th>
+                <th scope="col">Theme</th>
+                <th style="text-align: right;" scope="col">Date</th>
             </tr>
             </thead>
             <tbody>
             <c:forEach items="${posts}" var="post">
                 <tr>
                     <td><a href="<c:url value='/post?id=${post.id}'/>"><c:out value="${post.name}"/></a></td>
-                    <td><c:out value="${post.created.getTime()}"/></td>
+                    <td style="text-align: right; color: black"><c:out value="${post.created}"/></td>
                 </tr>
             </c:forEach>
             </tbody>

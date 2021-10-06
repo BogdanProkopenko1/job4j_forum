@@ -29,14 +29,18 @@
     Post post = (Post) request.getAttribute("post");
 %>
 <body>
+<div class="container mt-3">
+    <div class="row">
+        <h3><a style="font-weight: bold; color: black" href="<c:url value="/"/>">FORUM job4j</a></h3>
+    </div>
 <div class="container pt-3">
     <div class="row">
         <div class="card" style="width: 100%">
-            <div class="card-header"
-                    <% if (post == null) { %>
-            >Add
+            <div class="card-header">
+                <% if (post == null) { %>
+                <h5>Create post</h5>
                 <% } else { %>
-                >Edit
+                <h5>Edit post</h5>
                 <% } %>
             </div>
             <div class="card-body">
@@ -48,18 +52,18 @@
                         <div class="form-group">
                             <label for="name">Name</label>
                             <input required type="text" class="form-control" name="name" id="name"
-                                <% if (post != null) { %> placeholder="<%=post.getName()%>" <% } %>>
+                                <% if (post != null) { %> value="<%=post.getName()%>" <% } %>>
                         </div>
                         <div class="form-group">
                             <label for="description">Description</label>
-                            <input required type="text" class="form-control" name="description" id="description"
-                                <% if (post != null) { %> placeholder="<%=post.getDescription()%>" <% } %>>
+                            <textarea rows="3" required class="form-control" name="description" id="description"<% if (post != null) { %> value="<%=post.getDescription()%>" <% } %>></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary">Update</button>
                     </form>
             </div>
         </div>
     </div>
+</div>
 </div>
 </body>
 </html>
