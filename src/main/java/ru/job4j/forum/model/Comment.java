@@ -1,15 +1,13 @@
 package ru.job4j.forum.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.Objects;
 
 @Entity
+@Table(name = "comments")
 public class Comment {
 
     @Id

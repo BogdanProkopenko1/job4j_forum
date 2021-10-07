@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 @Entity
+@Table(name = "posts")
 public class Post {
 
     @Id
