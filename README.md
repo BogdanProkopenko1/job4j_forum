@@ -1,17 +1,18 @@
 # JOB4J_FORUM
-Web forum with authorization and registration, as well as the possibility of creating, editing posts and their subsequent discussion.
-### Main page:
+## Description
+Web forum with authorization and registration, as well as the possibility of creating, editing posts and their subsequent discussion. The project is constantly being finalized.
+## Images
+#### Main page:
 ![Alt Text](images/index.png)
-### Post discussion page:
+#### Post discussion page:
 ![Alt Text](images/post.png)
-### Registration:
+#### Registration:
 ![Alt Text](images/reg.png)
-### Authorization:
+#### Authorization:
 ![Alt Text](images/log.png)
-### Create page:
+#### Create page:
 ![Alt Text](images/create.png)
 
-The project is constantly being finalized.
+## Contacts
 
-My contacts:
-e-mail - pvzarea@gmail.com, telegram - @the_kyln
+E-mail - pvzarea@gmail.com, telegram - @the_kyln
