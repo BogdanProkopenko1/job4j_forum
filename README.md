@@ -1,4 +1,8 @@
 # JOB4J_FORUM
+## Technologies
+Spring (boot, security, data, tests), PostgreSQL, HTML, CSS.
+### Libraries
+JSTL, Liquibase. 
 ## Description
 Web forum with authorization and registration, as well as the possibility of creating, editing posts and their subsequent discussion. The project is constantly being finalized.
 ## Images
